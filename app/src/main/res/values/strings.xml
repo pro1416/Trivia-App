@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Trivia App</string>
+    <string name="trivia_text">Trivia</string>
+    <string name="false_text">False</string>
+    <string name="true_text">True</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="correct_text">Correct</string>
+    <string name="wrong_text">Wrong!</string>
+    <string name="sign">%1$d\u0020/\u0020%2$d</string>
+    <string name="your_score">Your score :\u0020 %1$d</string>
+    <string name="highs">High Score :\u0020%1$d</string>
+</resources>
