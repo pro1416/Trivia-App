@@ -71,14 +71,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //setting the view for onCreate
 
-        currentScore.setText(getString(R.string.your_score,your_Score));
+        currentScore.setText(getString(R.string.your_score, your_Score));
+        Toast.makeText(this, getString(R.string.internet), Toast.LENGTH_LONG).show();
 
         //using SharedPres to store high score
 
         SharedPreferences sharedPreferences = getSharedPreferences("HS", MODE_PRIVATE);
         highScoreStored = sharedPreferences.getInt("highScore", 0);
         //concatenation in setText gives warning so it this way
-        highScore.setText(getString(R.string.highs,highScoreStored));
+        highScore.setText(getString(R.string.highs, highScoreStored));
 
         //Sending JSON request using volley
 
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         }
                         question.setText(questionArrayList.get(currentIndex).getQuestion());
-                        questionIndex.setText(getString(R.string.sign,currentIndex,questionArrayList.size()));
+                        questionIndex.setText(getString(R.string.sign, currentIndex, questionArrayList.size()));
 
 
                     }
@@ -153,29 +154,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // storing the current score iff it is > storedHighScore
 
-        if (highScoreStored < your_Score) {
-            highScore.setText(getString(R.string.highs,your_Score));
+        if (highScoreStored < your_Score && your_Score <= questionArrayList.size()) {
+            highScore.setText(getString(R.string.highs, your_Score));
             SharedPreferences sharedPreferences = getSharedPreferences("HS", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("highScore", your_Score);
             editor.apply();
         }
+
     }
 
     private void checkAnswer(boolean answer, int index) {
 
         // checking for answer and adding score if correct
+
         boolean ans = questionArrayList.get(index).getAnswer();
-        if (answer == ans) {
+        if (answer == ans && your_Score < questionArrayList.size()) {
             Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
             your_Score += 1;
             goGreen();
 
+        }
+        // check if score doesnt exceed no.of questions
+        else if (your_Score==questionArrayList.size()) {
+            Toast.makeText(this, "You have attempted all the questions", Toast.LENGTH_SHORT).show();
         } else {
             shake();
             Toast.makeText(this, "Incorrect!", Toast.LENGTH_SHORT).show();
         }
-        currentScore.setText(getString(R.string.your_score,your_Score));
+        currentScore.setText(getString(R.string.your_score, your_Score));
     }
 
     private void goGreen() {
@@ -234,7 +241,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void updateQuestion(int index) {
         question.setText(questionArrayList.get(index).getQuestion());
-        questionIndex.setText(getString(R.string.sign,index,questionArrayList.size()));
+        questionIndex.setText(getString(R.string.sign, index, questionArrayList.size()));
 
     }
 }
