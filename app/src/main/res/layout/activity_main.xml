@@ -25,13 +25,13 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="393dp"
+        android:layout_width="match_parent"
         android:layout_height="147dp"
         android:layout_marginTop="128dp"
         android:background="@android:color/white"
         android:elevation="5dp"
         android:padding="10dp"
-        app:cardCornerRadius="8dp"
+        app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.842"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_vertical"
             android:padding="10dp"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
