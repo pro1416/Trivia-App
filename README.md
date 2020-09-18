@@ -1,5 +1,5 @@
 # Trivia-App
-It is a quiz app that uses Volley for fetching data and also calculates high score using SharedPreferences
+It is a quiz app that uses Volley for fetching data about question and answers,calculates current score also stores high score using SharedPreferences
 
 #### Concepts implemented :`Volley for fetching data from API,CardView,Animations and ConstraintLayout`
 
